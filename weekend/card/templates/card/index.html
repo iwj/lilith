@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>嘿，你的嘉宾证</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'card/style.css' %}" />
+  </head>
+  <body>
+    <div class='container'>
+      <p class="cook-say">嘿，伙计，来领你的嘉宾证。</p>
+      <div class="footer">
+        <p>
+          <a href="{% url 'card:inputpage' %}" class="make-button">
+            领 取
+          </a>
+        </p>
+      </div>
+    </div>
+  </body>
+</html>

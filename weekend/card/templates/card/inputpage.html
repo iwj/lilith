@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+    <title>嘿，你的嘉宾证</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'card/style.css' %}" />
+  </head>
+  <body>
+    <div class="make-ctn">
+      <p class="cook-say">请在下方输入你的名字<br>将印刻到你的嘉宾证中
+      </p>
+      <form action="{% url 'card:make' %}" method="post">
+        {% csrf_token %}
+        <p><input type='text' name='username' placeholder='例如：Larry Page' required></p>
+        <p><input type='submit' class="make-button" value="生成"></p>
+      </form>
+    </div>
+  </body>
+</html>
