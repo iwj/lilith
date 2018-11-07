@@ -1,0 +1,28 @@
+{
+  "name": "lilith",
+  "version": "1.0.0",
+  "description": "awesome",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iwj/lilith.git"
+  },
+  "keywords": [
+    "lili"
+  ],
+  "author": "Orange",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iwj/lilith/issues"
+  },
+  "homepage": "https://github.com/iwj/lilith#readme"
+}
