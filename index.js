@@ -3,27 +3,16 @@ var app = new express()
 
 const port = 8000
 
-app.use(express.static('public')) // static path
+app.use(express.static('static')) // static path
 app.set('view engine', 'pug')
 
-var middle = function(req, res, next) {
-  console.log('just a middleware demo')
-  next()
-}
-
-app.use(middle)
-
 app.get('/', function(req, res) { // GET demo
-  var args = {
-    title: 'just title',
-    message: 'just some text',
-  }
-  res.render('index', args)
+  res.redirect('/gif/wjz')
 })
 
 app.get('/file/:name', function(req, res, next) { // download file demo
   var options = {
-    root: __dirname + '/public/cache/', // The path should be customized
+    root: __dirname + '/static/cache/', // The path should be customized
     dotfiles: 'deny',
     headers: {
       'x-timestamp': Date.now(),
@@ -40,13 +29,70 @@ app.get('/file/:name', function(req, res, next) { // download file demo
   })
 })
 
+app.get('/base64/:string', function(req, res, next) {
+  var userInput = req.params.string
+  var buffer = Buffer.from(userInput);
+  var result = buffer.toString('base64');
+  res.send({
+    text: userInput,
+    buffer: buffer,
+    base64: result,
+  })
+})
+
+app.get('/gif/:keyword', function (req, res, next) {
+  var keywordBE = req.params.keyword
+  var args = {}
+  switch (keywordBE) {
+    case 'headman':
+    case '元首':
+      args.message = '元首的愤怒，你们这群渣渣，万能的德语'
+      args.keywordToFE = 'headman'
+      args.placeholderFE = [
+        '我们的微信再好用 北韩都没人用',
+        '没关系 我们可以派人去地推',
+        '北韩那里...',
+        '北韩那里根本没有接入英特网',
+        '（沉默）... ...',
+      ]
+      args.originURL = '/gif/headman.gif'
+      args.demoURL = '/gif/headman-demo.gif'
+      break;
+    case 'wjz':
+    case '王敬泽':
+      args.message = '王境泽，全国最有骨气的少年，在本应该成为小鲜肉的年纪里，却成了表情包'
+      args.keywordToFE = 'wjz'
+      args.placeholderFE = [
+        '我王境泽就是饿死',
+        '死外边 从这里跳下去',
+        '也不会吃你们一点东西',
+        '（啊呀）真香',
+      ]
+      args.originURL = '/gif/wjz.gif'
+      args.demoURL = '/gif/wjz-demo.gif'
+      break;
+    default:
+      res.status(404).render(
+        'layout-default', 
+        {errormsg: '路径错误，请检查'}
+        )
+  }
+  res.render('gif', args)
+})
+
 app.use(function(err, req, res, next) { // 500
   console.error(err.stack)
-  res.status(500).send('500 server error')
+  res.status(500).render(
+    'layout-default',
+    {errormsg: '500 server error'}
+    )
 })
 
 app.use(function(req, res, next) { // 404
-  res.status(404).send('404 not found')
+  res.status(404).render(
+    'layout-default', 
+    {errormsg: '404 not found'}
+    )
 })
 
 app.listen(port, ()=> {

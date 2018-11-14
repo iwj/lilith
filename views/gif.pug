@@ -1,0 +1,22 @@
+extends layout-default.pug
+block title
+  title= 'Gif动图表情包制作'
+block script
+  script(src='/lib/libgif.js')
+  script(src='/lib/gifshot.min.js')
+  
+block content
+  p= message
+  div
+    img(src=demoURL id='show')
+  div
+    p= '尽情发挥你的才华，编写一个独一无二的段子，为这张动图注入灵魂'
+  div(id='input-dialog')
+    - for (let p of placeholderFE)
+      input(type='text' placeholder=p)
+  div(id='control')
+    input(type='button' value='注入灵魂 (/≧▽≦)/' onclick='javascript:make()')
+    p(id='completeTip' style='display: none;')='生成完毕 ( •̀ ω •́ )y'
+  div(style='display: none;' id='hiddenDiv')
+    img(src=originURL id='origin-gif' keyword=keywordToFE)
+  script(src='/js/makegif.js')

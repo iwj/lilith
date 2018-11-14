@@ -1,0 +1,34 @@
+doctype html
+html
+  |
+  head
+    meta(charset= 'UTF-8')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no')
+    meta(http-equiv='X-UA-Compatible' content='ie=edge')
+    meta(name='theme-color' content='#f76304')
+    block title
+      title Lilith
+    block style
+      link(rel='stylesheet' href='/css/normalize.css')
+      link(rel='stylesheet' href='/css/milligram.min.css')
+      link(rel='stylesheet' href='/css/lilith.css')
+    block script
+  body
+    header
+      div(class='container')
+        ul(class='navi')
+          li
+            a(href='/')= '主页'
+          li
+            a(href='/gif/wjz')= '王境泽'
+          li
+            a(href='/gif/headman')= '元首'     
+    hr
+    main
+      div(class='container')
+        block content
+        h2= errormsg
+    footer
+      hr
+      div(class='container')
+        p='© Lilith'
