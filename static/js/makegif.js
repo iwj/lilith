@@ -92,6 +92,12 @@ var imagesToGif = function (completedImages) {
 
 // step 0.9 get dialogs from user input
 var make = function () {
+  var controlArea = document.getElementById('control')
+  console.log(controlArea.children.length)
+  if (controlArea.children.length === 3) {
+    controlArea.children[1].setAttribute('style', 'display: none;')
+    controlArea.removeChild(controlArea.children[2])
+  }
   // get the keyword
   var dialogsDataFE = {}
   var keywordElement = document.getElementById('origin-gif')
