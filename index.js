@@ -29,14 +29,25 @@ app.get('/file/:name', function(req, res, next) { // download file demo
   })
 })
 
-app.get('/base64/:string', function(req, res, next) {
+app.get('/btoa/:string', function(req, res, next) {
   var userInput = req.params.string
   var buffer = Buffer.from(userInput);
   var result = buffer.toString('base64');
   res.send({
+    base64: result,
     text: userInput,
     buffer: buffer,
-    base64: result,
+  })
+})
+
+app.get('/atob/:string', function(req, res, next) {
+  var userInput = req.params.string
+  var buffer = Buffer.from(userInput, 'base64')
+  var result = buffer.toString('utf8')
+  res.send({
+    text: result,
+    base64: userInput,
+    buffer: buffer,
   })
 })
 
