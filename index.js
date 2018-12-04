@@ -51,7 +51,7 @@ app.get('/atob/:string', function(req, res, next) {
   })
 })
 
-app.get('/gif/:keyword', function (req, res, next) {
+app.get('/:keyword', function (req, res, next) {
   var keywordBE = req.params.keyword
   var args = {}
   switch (keywordBE) {
