@@ -7,7 +7,7 @@ app.use(express.static('static')) // static path
 app.set('view engine', 'pug')
 
 app.get('/', function(req, res) { // GET demo
-  res.redirect('/gif/wjz')
+  res.redirect('/wjz')
 })
 
 app.get('/file/:name', function(req, res, next) { // download file demo
