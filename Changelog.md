@@ -19,3 +19,10 @@
 ### Delete unused files
 
 - delete the old files in `origin/`
+
+## 2019-01-02 [0.12] Jian Woo
+
+### Update
+
+- Update core, improve performance
+- Use materializecss
