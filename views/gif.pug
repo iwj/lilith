@@ -8,15 +8,16 @@ block script
 block content
   p= message
   div
-    img(src=demoURL id='show')
+    img(src=demoURL id='show' class="responsive-img")
   div
     p= '尽情发挥你的才华，编写一个独一无二的段子，为这张动图注入灵魂'
   div(id='input-dialog')
     - for (let p of placeholderFE)
       input(type='text' placeholder=p)
   div(id='control')
-    input(type='button' value='注入灵魂 (/≧▽≦)/' onclick='javascript:make()')
-    p(id='completeTip' style='display: none;')='生成完毕 ( •̀ ω •́ )y'
+    p
+      a(class='btn' onclick='make()') 注入灵魂 (/≧▽≦)/
+    p(id='complete' style='display: none;')
   div(style='display: none;' id='hiddenDiv')
     img(src=originURL id='origin-gif' keyword=keywordToFE)
   script(src='/js/makegif.js')

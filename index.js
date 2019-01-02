@@ -1,4 +1,5 @@
 var express = require('express')
+let gifshot = require('./gifshot.min')
 var app = new express()
 
 const port = 8000
@@ -6,7 +7,7 @@ const port = 8000
 app.use(express.static('static')) // static path
 app.set('view engine', 'pug')
 
-app.get('/', function(req, res) { // GET demo
+app.get('/', function(req, res, next) { // GET demo
   res.redirect('/wjz')
 })
 
